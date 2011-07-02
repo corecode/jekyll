@@ -99,6 +99,10 @@ opts = OptionParser.new do |opts|
     options['future'] = future
   end
 
+  opts.on("--[no-]drafts", "Render posts marked as draft") do |drafts|
+    options['drafts'] = drafts
+  end
+
   opts.on("--permalink [TYPE]", "Use 'date' (default) for YYYY/MM/DD") do |style|
     options['permalink'] = style unless style.nil?
   end

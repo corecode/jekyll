@@ -45,8 +45,15 @@ module Jekyll
         self.date = Time.parse(self.data["date"].to_s)
       end
 
-      if self.data.has_key?('published') && self.data['published'] == false
-        self.published = false
+      if self.data.has_key?('published')
+        case self.data['published']
+        when false
+          self.published = false
+        when 'draft'
+          self.published = self.site.drafts
+        else
+          self.published = true
+        end
       else
         self.published = true
       end
